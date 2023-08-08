@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "LichTrinh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>LỊCH TRÌNH</h2>
+<div id="toast"></div>
+
+<div id="gridContainer"></div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "/Admin/Dashboard/LayLichTrinh",
+            dataType: "json",
+            success: function (result) {
+                $("#gridContainer").dxDataGrid({
+                    dataSource: result,
+                    headerFilter: {
+                        visible: true,
+                    },
+                    columns: [
+                        { dataField: "MaLichTrinh", caption: "Mã lịch trình", headerFilter: true, },
+                        { dataField: "MaTau", caption: "Mã tàu" },
+                        { dataField: "TenTau", caption: "Tên tàu" },
+                        { dataField: "TenGaDi", caption: "Tên ga đi" },
+                        { dataField: "NgayDi", caption: "Ngày đi" },
+               
+                        { dataField: "TenGaDen", caption: "Tên ga đến" },                    
+                        { dataField: "NgayDen", caption: "Ngày đến" },                     
+                    
+                        { dataField: "NgayTao", caption: "Ngày tạo" },
+                        { dataField: "NguoiTao", caption: "Người tạo" }
+                    ],
+                    filterRow: { visible: true },
+
+                    columnAutoWidth: true,
+                    paging: { pageSize: 10 },
+
+                });
+            },
+            error: function () {
+                alert("Lỗi server")
+            },
+
+        });
+
+
+
+    });
+
+</script>

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="login-block">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Đăng nhập</h2>
+                <form method="post" action="/AuthCustomer/HandleLogin" class="login-form">
+                    <div class="form-group">
+                        <label for="username" class="text-uppercase">Tài khoản</label>
+                        <input type="text" class="form-control" name="Username">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="text-uppercase">Mật khẩu</label>
+                        <input type="password" class="form-control" name="Password">
+                    </div>
+                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+
+                    <div class="form-check">
+
+                        <div>
+                            <button type="submit" class="btn-blue btn-red btn-style-1 pt-2">Đăng nhập</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div>
+                        <div>
+                            <img class="d-block img-fluid" src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/6/19/1058244/23.6.Du_Lich_Duong_S.jpg" width="650" height="400">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

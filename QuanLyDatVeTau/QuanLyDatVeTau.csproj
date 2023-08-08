@@ -1,0 +1,999 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33E4247E-9A98-422A-8A43-2C098E8D19D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuanLyDatVeTau</RootNamespace>
+    <AssemblyName>QuanLyDatVeTau</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44322</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.9.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExtreme.AspNet.Data.2.9.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExtreme.AspNet.Mvc">
+      <HintPath>..\lib\DevExtreme\DevExtreme.AspNet.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DevExtremeBundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyTauController.cs" />
+    <Compile Include="Controllers\AuthCustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DataObject.cs" />
+    <Compile Include="Helpers\Functions.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Models\DTOs\AdminDTO.cs" />
+    <Compile Include="Models\DTOs\DatVe.cs" />
+    <Compile Include="Models\DTOs\GaTauDTO.cs" />
+    <Compile Include="Models\DTOs\LichTrinh.cs" />
+    <Compile Include="Models\DTOs\ResponseCreateDTO.cs" />
+    <Compile Include="Models\DTOs\TauDTO.cs" />
+    <Compile Include="Models\DTOs\UserLogin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ReadDataSQL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Charset.css" />
+    <Content Include="Content\dx-diagram.css" />
+    <Content Include="Content\dx-diagram.min.css" />
+    <Content Include="Content\dx-gantt.css" />
+    <Content Include="Content\dx-gantt.min.css" />
+    <Content Include="Content\dx.carmine.compact.css" />
+    <Content Include="Content\dx.carmine.css" />
+    <Content Include="Content\dx.contrast.compact.css" />
+    <Content Include="Content\dx.contrast.css" />
+    <Content Include="Content\dx.dark.compact.css" />
+    <Content Include="Content\dx.dark.css" />
+    <Content Include="Content\dx.darkmoon.compact.css" />
+    <Content Include="Content\dx.darkmoon.css" />
+    <Content Include="Content\dx.darkviolet.compact.css" />
+    <Content Include="Content\dx.darkviolet.css" />
+    <Content Include="Content\dx.greenmist.compact.css" />
+    <Content Include="Content\dx.greenmist.css" />
+    <Content Include="Content\dx.light.compact.css" />
+    <Content Include="Content\dx.light.css" />
+    <Content Include="Content\dx.material.blue.dark.compact.css" />
+    <Content Include="Content\dx.material.blue.dark.css" />
+    <Content Include="Content\dx.material.blue.light.compact.css" />
+    <Content Include="Content\dx.material.blue.light.css" />
+    <Content Include="Content\dx.material.lime.dark.compact.css" />
+    <Content Include="Content\dx.material.lime.dark.css" />
+    <Content Include="Content\dx.material.lime.light.compact.css" />
+    <Content Include="Content\dx.material.lime.light.css" />
+    <Content Include="Content\dx.material.orange.dark.compact.css" />
+    <Content Include="Content\dx.material.orange.dark.css" />
+    <Content Include="Content\dx.material.orange.light.compact.css" />
+    <Content Include="Content\dx.material.orange.light.css" />
+    <Content Include="Content\dx.material.purple.dark.compact.css" />
+    <Content Include="Content\dx.material.purple.dark.css" />
+    <Content Include="Content\dx.material.purple.light.compact.css" />
+    <Content Include="Content\dx.material.purple.light.css" />
+    <Content Include="Content\dx.material.teal.dark.compact.css" />
+    <Content Include="Content\dx.material.teal.dark.css" />
+    <Content Include="Content\dx.material.teal.light.compact.css" />
+    <Content Include="Content\dx.material.teal.light.css" />
+    <Content Include="Content\dx.softblue.compact.css" />
+    <Content Include="Content\dx.softblue.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\01.jpg" />
+    <Content Include="Images\02.jpg" />
+    <Content Include="Images\03.jpg" />
+    <Content Include="Images\04.jpg" />
+    <Content Include="Images\05.gif" />
+    <Content Include="Images\06.jpg" />
+    <Content Include="Images\07.jpg" />
+    <Content Include="Images\08.jpg" />
+    <Content Include="Images\09.jpg" />
+    <Content Include="Images\10.jpg" />
+    <Content Include="Images\ARS.png" />
+    <Content Include="Images\blog3.jpg" />
+    <Content Include="Images\DSVN.png" />
+    <Content Include="Images\flight\0.png" />
+    <Content Include="Images\flight\01.jpeg" />
+    <Content Include="Images\flight\01.jpg" />
+    <Content Include="Images\flight\02.jpg" />
+    <Content Include="Images\flight\03.jpg" />
+    <Content Include="Images\flight\04.jpg" />
+    <Content Include="Images\flight\05.jpg" />
+    <Content Include="Images\flight\2020.png" />
+    <Content Include="Images\flight\2021.png" />
+    <Content Include="Images\flight\250033976_1004032170153472_333339328175302888_n.jpg" />
+    <Content Include="Images\flight\63cabda31a4e517766bfb576bba64e7d.png" />
+    <Content Include="Images\flight\AirAsiaAirline.png" />
+    <Content Include="Images\flight\bamboo.png" />
+    <Content Include="Images\flight\Dragonairline.png" />
+    <Content Include="Images\flight\flight1.jpg" />
+    <Content Include="Images\flight\flight2.jpg" />
+    <Content Include="Images\flight\flight3.jpg" />
+    <Content Include="Images\flight\flight4.jpg" />
+    <Content Include="Images\flight\flight5.jpg" />
+    <Content Include="Images\flight\imgTicket.png" />
+    <Content Include="Images\flight\may-anh-cho-nguoi-moi.jpg" />
+    <Content Include="Images\flight\plane1.jpg" />
+    <Content Include="Images\flight\plane2.jpg" />
+    <Content Include="Images\flight\plane3.jpg" />
+    <Content Include="Images\flight\plane4.jpg" />
+    <Content Include="Images\flight\plane5.jpg" />
+    <Content Include="Images\flight\plane6.jpg" />
+    <Content Include="Images\flight\register1.jpg" />
+    <Content Include="Images\flight\Screenshot %28221%29.png" />
+    <Content Include="Images\flight\Screenshot %28225%29.png" />
+    <Content Include="Images\flight\Screenshot %28227%29.png" />
+    <Content Include="Images\flight\Screenshot 2021-09-30 151142.png" />
+    <Content Include="Images\flight\Screenshot 2021-09-30 151408.png" />
+    <Content Include="Images\flight\Screenshot 2021-10-03 123159.png" />
+    <Content Include="Images\flight\Screenshot 2021-10-03 155217.png" />
+    <Content Include="Images\flight\Screenshot 2021-11-05 090439.png" />
+    <Content Include="Images\flight\Screenshot 2021-12-03 204553.png" />
+    <Content Include="Images\flight\SingaporeAirlines.png" />
+    <Content Include="Images\flight\slide1.jpg" />
+    <Content Include="Images\flight\slide10.jpg" />
+    <Content Include="Images\flight\slide11.jpg" />
+    <Content Include="Images\flight\slide12.jpg" />
+    <Content Include="Images\flight\slide13.png" />
+    <Content Include="Images\flight\slide14.jpg" />
+    <Content Include="Images\flight\slide2.jpg" />
+    <Content Include="Images\flight\slide3.jpg" />
+    <Content Include="Images\flight\slide4.jpg" />
+    <Content Include="Images\flight\slide5.jpg" />
+    <Content Include="Images\flight\slide6.jpg" />
+    <Content Include="Images\flight\slide7.jpg" />
+    <Content Include="Images\flight\slide8.jpg" />
+    <Content Include="Images\flight\slide9.jpg" />
+    <Content Include="Images\flight\TauLuaBanner01.jpg" />
+    <Content Include="Images\flight\TauLuaBanner02.jpg" />
+    <Content Include="Images\flight\TauLuaBanner03.jpg" />
+    <Content Include="Images\flight\ThaiAirlines.png" />
+    <Content Include="Images\flight\TurkishAirlines.png" />
+    <Content Include="Images\flight\viejet.png" />
+    <Content Include="Images\flight\vnairline.jpg" />
+    <Content Include="Images\imgTicket.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\package3.jpg" />
+    <Content Include="Images\partner1.png" />
+    <Content Include="Images\partner2.png" />
+    <Content Include="Images\partner3.png" />
+    <Content Include="Images\partner4.png" />
+    <Content Include="Images\partner5.png" />
+    <Content Include="Images\partner6.png" />
+    <Content Include="Images\payment1.png" />
+    <Content Include="Images\payment2.png" />
+    <Content Include="Images\payment3.png" />
+    <Content Include="Images\payment4.png" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-buon-ma-thuot.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-ca-mau.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-con-dao.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-da-nang.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-dong-hoi.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-hai-phong.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-phu-quoc.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-pleiku.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-tam-ky---chu-lai.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-thanh-hoa.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-tuy-hoa.jpg" />
+    <Content Include="Images\post\domestictickets\book-cheap-flight-tickets-to-vinh.jpg" />
+    <Content Include="Images\post\domestictickets\book-flight-tickets-to-rach-gia.jpg" />
+    <Content Include="Images\post\domestictickets\cheap-flights-from-vietjet-to-chu-lai.jpg" />
+    <Content Include="Images\post\domestictickets\cheap-flights-from-vietjet-to-da-lat.jpeg" />
+    <Content Include="Images\post\domestictickets\cheap-flights-from-vietjet-to-hanoi.jpg" />
+    <Content Include="Images\post\domestictickets\flight-ticket-to-van-don-quang-ninh.jpg" />
+    <Content Include="Images\post\domestictickets\fly-unlimited-with-vietjet-air-s-0vnd-promotional-tickets.jpg" />
+    <Content Include="Images\post\domestictickets\increase-the-frequency-of-many-domestic-flights-to-hanoi--ho-chi-minh-city--and-da-nang.jpg" />
+    <Content Include="Images\post\domestictickets\open-sale-of-direct-flights-from-ho-chi-minh-city-to-dien-bien--priced-from-7-usd.jpg" />
+    <Content Include="Images\post\domestictickets\opening-history-ho-chi-minh---dien-bien-route.png" />
+    <Content Include="Images\post\internationaltickets\5-super-attractive-dishes-of-the-culinary-paradise-of-prague-–-enjoy-now.jpg" />
+    <Content Include="Images\post\internationaltickets\bamboo-airways-announced-a-direct-route-between-vietnam-and-australia.jpg" />
+    <Content Include="Images\post\internationaltickets\bamboo-airways-announces-direct-flight-between-vietnam-and-uk.jpg" />
+    <Content Include="Images\post\internationaltickets\cheap-flights-from-vietjet-to-singapore.jpg" />
+    <Content Include="Images\post\internationaltickets\cheap-flights-to-australia.jpg" />
+    <Content Include="Images\post\internationaltickets\discover-the-5-most-popular-stops-in-portugal.jpg" />
+    <Content Include="Images\post\internationaltickets\flight-routes-with-cheap-tickets-in-december.jpg" />
+    <Content Include="Images\post\internationaltickets\flight-tickets-to-siem-reap.jpg" />
+    <Content Include="Images\post\internationaltickets\flight-tickets-to-singapore---hong-kong-are-popular-thanks-to-the-tourist-bubble.jpg" />
+    <Content Include="Images\post\internationaltickets\if-traveling-to-taiwan--which-city-should-you-go-to-first.jpg" />
+    <Content Include="Images\post\internationaltickets\launching-international-commercial-flights.jpg" />
+    <Content Include="Images\post\internationaltickets\lotusmiles-cooperates-with-miresto.jpg" />
+    <Content Include="Images\post\internationaltickets\one-more-airline-flies-from-ho-chi-minh-city-to-bangkok.jpg" />
+    <Content Include="Images\post\internationaltickets\regular-direct-flight-to-ho-chi-minh-city---san-francisco-%28usa%29-from-the-end-of-2021.jpg" />
+    <Content Include="Images\post\internationaltickets\say-hello-t12008m0.jpg" />
+    <Content Include="Images\post\internationaltickets\travel-with-abay-to-italy-through-the-most-famous-landmarks.jpg" />
+    <Content Include="Images\post\internationaltickets\vietjet-restores-flights-to-korea.jpg" />
+    <Content Include="Images\post\internationaltickets\vietnam-airlines-continues-to-sell-international-flights-to-russia-and-south-korea.jpg" />
+    <Content Include="Images\post\internationaltickets\vietnam-airlines-will-operate-a-flight-to-frankfurt-%28germany%29..jpg" />
+    <Content Include="Images\post\internationaltickets\vinpearl-cooperates-with-airlines-to-open-international-routes.jpg" />
+    <Content Include="Images\post\internationaltickets\which-island-to-choose-for-a-summer-vacation-in-greece.jpg" />
+    <Content Include="Images\post\lienhe\thong-tin-lien-he.jpg" />
+    <Content Include="Images\post\promotioninformation\bamboo-airways-immediately-reduces-the-fares-of-hot-routes-by-70%25.jpg" />
+    <Content Include="Images\post\promotioninformation\bamboo-airways-offers-free-business-class-upgrade-for-ocb-cardholders.jpg" />
+    <Content Include="Images\post\promotioninformation\bamboo-launches-attractive-offers-for-guests-to-experience-the-business-lounge.jpg" />
+    <Content Include="Images\post\promotioninformation\bamboo-launches-attractive-offers-for-guests-to-experience-the-business-lounge.png" />
+    <Content Include="Images\post\promotioninformation\booming-bamboo-airways-buy-01-get-01-free.jpg" />
+    <Content Include="Images\post\promotioninformation\buy-1-get-1-free---why-not-lock-to-fly-with-bamboo-airways.jpg" />
+    <Content Include="Images\post\promotioninformation\buy-convenient-monthly-tickets--fly-as-much-as-you-want-with-bamboo-airways.jpg" />
+    <Content Include="Images\post\promotioninformation\buy-tickets-and-get-vouchers---buy-1-get-2-with-vietnam-airlines.jpg" />
+    <Content Include="Images\post\promotioninformation\fall-in-love-with-flying---enjoy-golf-with-bamboo-airways.jpg" />
+    <Content Include="Images\post\promotioninformation\flying-within-reach-with-the-new-version-of-bamboo-airways--mobile-application.jpg" />
+    <Content Include="Images\post\promotioninformation\grab-the-opportunity-to-fly-unlimited-with-bamboo-pass-unlimited.jpg" />
+    <Content Include="Images\post\promotioninformation\launching-bamboo-holidays--get-instant-offers!.jpg" />
+    <Content Include="Images\post\promotioninformation\offers-for-lotusmiles-members-at-intercontinental-hotel-group.jpg" />
+    <Content Include="Images\post\promotioninformation\only-10-days-left-to-book-vietjet-air-tickets-and-receive-a-free-checked-baggage-gift.jpg" />
+    <Content Include="Images\post\promotioninformation\promotional-airfare-0-vnd-summer-2022.jpg" />
+    <Content Include="Images\post\promotioninformation\the-same-day-of-july-–-great-deals-from-vietnam-airlines.jpg" />
+    <Content Include="Images\post\promotioninformation\vietjet-offers-0-vnd-promotion-at-12-noon-–-open-all-day.jpg" />
+    <Content Include="Images\post\promotioninformation\vietjet-offers-2-000-000-tickets-for-0-vnd-for-spring-2022.jpg" />
+    <Content Include="Images\post\promotioninformation\vietjet-opens-ticket-sales-for-0-vnd-in-24-hours.jpg" />
+    <Content Include="Images\post\promotioninformation\vietnam-airlines-extends-3-usd-ticket-incentive-program-throughout-the-domestic-network.jpg" />
+    <Content Include="Images\post\promotioninformation\x2-rewards-with-attractive-promotions-from-vietnam-airlines.jfif" />
+    <Content Include="Images\post\promotioninformation\year-end-gratitude--bamboo-airways-immediately-reduces-the-fares-of--hot--routes-by-70%25.jpg" />
+    <Content Include="Images\post\promotioninformation\year-end-gratitude--bamboo-airways-immediately-reduces-the-fares-of-hot-routes.jpg" />
+    <Content Include="Images\post\tinkhuyenmai\haha.jpeg" />
+    <Content Include="Images\post\vetauquocte\alo-alo.jpeg" />
+    <Content Include="Images\register.jpg" />
+    <Content Include="Images\Yatra-01.png" />
+    <Content Include="Images\Yatra-white.png" />
+    <Content Include="Public\css\all.min.css" />
+    <Content Include="Public\css\bo2otstrap.min.css" />
+    <Content Include="Public\css\bootstrap.min.css" />
+    <Content Include="Public\css\car.css" />
+    <Content Include="Public\css\cruise.css" />
+    <Content Include="Public\css\Cruise.html" />
+    <Content Include="Public\css\dashboard.css" />
+    <Content Include="Public\css\flight.css" />
+    <Content Include="Public\css\fStyle.css" />
+    <Content Include="Public\css\hotel.css" />
+    <Content Include="Public\css\icons.css" />
+    <Content Include="Public\css\plugin.css" />
+    <Content Include="Public\css\style.css" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-2.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-3.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-4.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62-5.html" />
+    <Content Include="Public\fonts\fontawesome-webfont5b62.html" />
+    <Content Include="Public\fonts\fontawesome-webfontd41d.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Public\fonts\glyphicons-halflings-regulard41dd41d.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-2.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-3.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5-4.html" />
+    <Content Include="Public\fonts\ionicons28b528b528b5.html" />
+    <Content Include="Public\font\flaticon.css" />
+    <Content Include="Public\font\Flaticon.svg" />
+    <Content Include="Public\font\iconsmindca27.svg" />
+    <Content Include="Public\font\simple-line-iconsc05f-2.html" />
+    <Content Include="Public\font\simple-line-iconsc05f.html" />
+    <Content Include="Public\images\01.jpg" />
+    <Content Include="Public\images\02.jpg" />
+    <Content Include="Public\images\03.jpg" />
+    <Content Include="Public\images\04.jpg" />
+    <Content Include="Public\images\05.gif" />
+    <Content Include="Public\images\06.jpg" />
+    <Content Include="Public\images\07.jpg" />
+    <Content Include="Public\images\08.jpg" />
+    <Content Include="Public\images\09.jpg" />
+    <Content Include="Public\images\10.jpg" />
+    <Content Include="Public\images\ARS.png" />
+    <Content Include="Public\images\blog3.jpg" />
+    <Content Include="Public\images\DSVN.png" />
+    <Content Include="Public\images\flight\0.png" />
+    <Content Include="Public\images\flight\01.jpeg" />
+    <Content Include="Public\images\flight\01.jpg" />
+    <Content Include="Public\images\flight\02.jpg" />
+    <Content Include="Public\images\flight\03.jpg" />
+    <Content Include="Public\images\flight\04.jpg" />
+    <Content Include="Public\images\flight\05.jpg" />
+    <Content Include="Public\images\flight\2020.png" />
+    <Content Include="Public\images\flight\2021.png" />
+    <Content Include="Public\images\flight\250033976_1004032170153472_333339328175302888_n.jpg" />
+    <Content Include="Public\images\flight\63cabda31a4e517766bfb576bba64e7d.png" />
+    <Content Include="Public\images\flight\AirAsiaAirline.png" />
+    <Content Include="Public\images\flight\bamboo.png" />
+    <Content Include="Public\images\flight\Dragonairline.png" />
+    <Content Include="Public\images\flight\flight1.jpg" />
+    <Content Include="Public\images\flight\flight2.jpg" />
+    <Content Include="Public\images\flight\flight3.jpg" />
+    <Content Include="Public\images\flight\flight4.jpg" />
+    <Content Include="Public\images\flight\flight5.jpg" />
+    <Content Include="Public\images\flight\imgTicket.png" />
+    <Content Include="Public\images\flight\may-anh-cho-nguoi-moi.jpg" />
+    <Content Include="Public\images\flight\plane1.jpg" />
+    <Content Include="Public\images\flight\plane2.jpg" />
+    <Content Include="Public\images\flight\plane3.jpg" />
+    <Content Include="Public\images\flight\plane4.jpg" />
+    <Content Include="Public\images\flight\plane5.jpg" />
+    <Content Include="Public\images\flight\plane6.jpg" />
+    <Content Include="Public\images\flight\register1.jpg" />
+    <Content Include="Public\images\flight\Screenshot %28221%29.png" />
+    <Content Include="Public\images\flight\Screenshot %28225%29.png" />
+    <Content Include="Public\images\flight\Screenshot %28227%29.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-09-30 151142.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-09-30 151408.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-10-03 123159.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-10-03 155217.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-11-05 090439.png" />
+    <Content Include="Public\images\flight\Screenshot 2021-12-03 204553.png" />
+    <Content Include="Public\images\flight\SingaporeAirlines.png" />
+    <Content Include="Public\images\flight\slide1.jpg" />
+    <Content Include="Public\images\flight\slide10.jpg" />
+    <Content Include="Public\images\flight\slide11.jpg" />
+    <Content Include="Public\images\flight\slide12.jpg" />
+    <Content Include="Public\images\flight\slide13.png" />
+    <Content Include="Public\images\flight\slide14.jpg" />
+    <Content Include="Public\images\flight\slide2.jpg" />
+    <Content Include="Public\images\flight\slide3.jpg" />
+    <Content Include="Public\images\flight\slide4.jpg" />
+    <Content Include="Public\images\flight\slide5.jpg" />
+    <Content Include="Public\images\flight\slide6.jpg" />
+    <Content Include="Public\images\flight\slide7.jpg" />
+    <Content Include="Public\images\flight\slide8.jpg" />
+    <Content Include="Public\images\flight\slide9.jpg" />
+    <Content Include="Public\images\flight\TauLuaBanner01.jpg" />
+    <Content Include="Public\images\flight\TauLuaBanner02.jpg" />
+    <Content Include="Public\images\flight\TauLuaBanner03.jpg" />
+    <Content Include="Public\images\flight\ThaiAirlines.png" />
+    <Content Include="Public\images\flight\TurkishAirlines.png" />
+    <Content Include="Public\images\flight\viejet.png" />
+    <Content Include="Public\images\flight\vnairline.jpg" />
+    <Content Include="Public\images\imgTicket.png" />
+    <Content Include="Public\images\logo.png" />
+    <Content Include="Public\images\package3.jpg" />
+    <Content Include="Public\images\partner1.png" />
+    <Content Include="Public\images\partner2.png" />
+    <Content Include="Public\images\partner3.png" />
+    <Content Include="Public\images\partner4.png" />
+    <Content Include="Public\images\partner5.png" />
+    <Content Include="Public\images\partner6.png" />
+    <Content Include="Public\images\payment1.png" />
+    <Content Include="Public\images\payment2.png" />
+    <Content Include="Public\images\payment3.png" />
+    <Content Include="Public\images\payment4.png" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-buon-ma-thuot.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-ca-mau.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-con-dao.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-da-nang.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-dong-hoi.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-hai-phong.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-phu-quoc.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-pleiku.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-tam-ky---chu-lai.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-thanh-hoa.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-tuy-hoa.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-cheap-flight-tickets-to-vinh.jpg" />
+    <Content Include="Public\images\post\domestictickets\book-flight-tickets-to-rach-gia.jpg" />
+    <Content Include="Public\images\post\domestictickets\cheap-flights-from-vietjet-to-chu-lai.jpg" />
+    <Content Include="Public\images\post\domestictickets\cheap-flights-from-vietjet-to-da-lat.jpeg" />
+    <Content Include="Public\images\post\domestictickets\cheap-flights-from-vietjet-to-hanoi.jpg" />
+    <Content Include="Public\images\post\domestictickets\flight-ticket-to-van-don-quang-ninh.jpg" />
+    <Content Include="Public\images\post\domestictickets\fly-unlimited-with-vietjet-air-s-0vnd-promotional-tickets.jpg" />
+    <Content Include="Public\images\post\domestictickets\increase-the-frequency-of-many-domestic-flights-to-hanoi--ho-chi-minh-city--and-da-nang.jpg" />
+    <Content Include="Public\images\post\domestictickets\open-sale-of-direct-flights-from-ho-chi-minh-city-to-dien-bien--priced-from-7-usd.jpg" />
+    <Content Include="Public\images\post\domestictickets\opening-history-ho-chi-minh---dien-bien-route.png" />
+    <Content Include="Public\images\post\internationaltickets\5-super-attractive-dishes-of-the-culinary-paradise-of-prague-–-enjoy-now.jpg" />
+    <Content Include="Public\images\post\internationaltickets\bamboo-airways-announced-a-direct-route-between-vietnam-and-australia.jpg" />
+    <Content Include="Public\images\post\internationaltickets\bamboo-airways-announces-direct-flight-between-vietnam-and-uk.jpg" />
+    <Content Include="Public\images\post\internationaltickets\cheap-flights-from-vietjet-to-singapore.jpg" />
+    <Content Include="Public\images\post\internationaltickets\cheap-flights-to-australia.jpg" />
+    <Content Include="Public\images\post\internationaltickets\discover-the-5-most-popular-stops-in-portugal.jpg" />
+    <Content Include="Public\images\post\internationaltickets\flight-routes-with-cheap-tickets-in-december.jpg" />
+    <Content Include="Public\images\post\internationaltickets\flight-tickets-to-siem-reap.jpg" />
+    <Content Include="Public\images\post\internationaltickets\flight-tickets-to-singapore---hong-kong-are-popular-thanks-to-the-tourist-bubble.jpg" />
+    <Content Include="Public\images\post\internationaltickets\if-traveling-to-taiwan--which-city-should-you-go-to-first.jpg" />
+    <Content Include="Public\images\post\internationaltickets\launching-international-commercial-flights.jpg" />
+    <Content Include="Public\images\post\internationaltickets\lotusmiles-cooperates-with-miresto.jpg" />
+    <Content Include="Public\images\post\internationaltickets\one-more-airline-flies-from-ho-chi-minh-city-to-bangkok.jpg" />
+    <Content Include="Public\images\post\internationaltickets\regular-direct-flight-to-ho-chi-minh-city---san-francisco-%28usa%29-from-the-end-of-2021.jpg" />
+    <Content Include="Public\images\post\internationaltickets\say-hello-t12008m0.jpg" />
+    <Content Include="Public\images\post\internationaltickets\travel-with-abay-to-italy-through-the-most-famous-landmarks.jpg" />
+    <Content Include="Public\images\post\internationaltickets\vietjet-restores-flights-to-korea.jpg" />
+    <Content Include="Public\images\post\internationaltickets\vietnam-airlines-continues-to-sell-international-flights-to-russia-and-south-korea.jpg" />
+    <Content Include="Public\images\post\internationaltickets\vietnam-airlines-will-operate-a-flight-to-frankfurt-%28germany%29..jpg" />
+    <Content Include="Public\images\post\internationaltickets\vinpearl-cooperates-with-airlines-to-open-international-routes.jpg" />
+    <Content Include="Public\images\post\internationaltickets\which-island-to-choose-for-a-summer-vacation-in-greece.jpg" />
+    <Content Include="Public\images\post\lienhe\thong-tin-lien-he.jpg" />
+    <Content Include="Public\images\post\promotioninformation\bamboo-airways-immediately-reduces-the-fares-of-hot-routes-by-70%25.jpg" />
+    <Content Include="Public\images\post\promotioninformation\bamboo-airways-offers-free-business-class-upgrade-for-ocb-cardholders.jpg" />
+    <Content Include="Public\images\post\promotioninformation\bamboo-launches-attractive-offers-for-guests-to-experience-the-business-lounge.jpg" />
+    <Content Include="Public\images\post\promotioninformation\bamboo-launches-attractive-offers-for-guests-to-experience-the-business-lounge.png" />
+    <Content Include="Public\images\post\promotioninformation\booming-bamboo-airways-buy-01-get-01-free.jpg" />
+    <Content Include="Public\images\post\promotioninformation\buy-1-get-1-free---why-not-lock-to-fly-with-bamboo-airways.jpg" />
+    <Content Include="Public\images\post\promotioninformation\buy-convenient-monthly-tickets--fly-as-much-as-you-want-with-bamboo-airways.jpg" />
+    <Content Include="Public\images\post\promotioninformation\buy-tickets-and-get-vouchers---buy-1-get-2-with-vietnam-airlines.jpg" />
+    <Content Include="Public\images\post\promotioninformation\fall-in-love-with-flying---enjoy-golf-with-bamboo-airways.jpg" />
+    <Content Include="Public\images\post\promotioninformation\flying-within-reach-with-the-new-version-of-bamboo-airways--mobile-application.jpg" />
+    <Content Include="Public\images\post\promotioninformation\grab-the-opportunity-to-fly-unlimited-with-bamboo-pass-unlimited.jpg" />
+    <Content Include="Public\images\post\promotioninformation\launching-bamboo-holidays--get-instant-offers!.jpg" />
+    <Content Include="Public\images\post\promotioninformation\offers-for-lotusmiles-members-at-intercontinental-hotel-group.jpg" />
+    <Content Include="Public\images\post\promotioninformation\only-10-days-left-to-book-vietjet-air-tickets-and-receive-a-free-checked-baggage-gift.jpg" />
+    <Content Include="Public\images\post\promotioninformation\promotional-airfare-0-vnd-summer-2022.jpg" />
+    <Content Include="Public\images\post\promotioninformation\the-same-day-of-july-–-great-deals-from-vietnam-airlines.jpg" />
+    <Content Include="Public\images\post\promotioninformation\vietjet-offers-0-vnd-promotion-at-12-noon-–-open-all-day.jpg" />
+    <Content Include="Public\images\post\promotioninformation\vietjet-offers-2-000-000-tickets-for-0-vnd-for-spring-2022.jpg" />
+    <Content Include="Public\images\post\promotioninformation\vietjet-opens-ticket-sales-for-0-vnd-in-24-hours.jpg" />
+    <Content Include="Public\images\post\promotioninformation\vietnam-airlines-extends-3-usd-ticket-incentive-program-throughout-the-domestic-network.jpg" />
+    <Content Include="Public\images\post\promotioninformation\x2-rewards-with-attractive-promotions-from-vietnam-airlines.jfif" />
+    <Content Include="Public\images\post\promotioninformation\year-end-gratitude--bamboo-airways-immediately-reduces-the-fares-of--hot--routes-by-70%25.jpg" />
+    <Content Include="Public\images\post\promotioninformation\year-end-gratitude--bamboo-airways-immediately-reduces-the-fares-of-hot-routes.jpg" />
+    <Content Include="Public\images\post\tinkhuyenmai\haha.jpeg" />
+    <Content Include="Public\images\post\vetauquocte\alo-alo.jpeg" />
+    <Content Include="Public\images\register.jpg" />
+    <Content Include="Public\images\Yatra-01.png" />
+    <Content Include="Public\images\Yatra-white.png" />
+    <Content Include="Public\js\bootstrap.min.js" />
+    <Content Include="Public\js\chart.js" />
+    <Content Include="Public\js\counterup.min.js" />
+    <Content Include="Public\js\custom-accordian.js" />
+    <Content Include="Public\js\custom-countdown.js" />
+    <Content Include="Public\js\custom-video.js" />
+    <Content Include="Public\js\dashboard-custom.js" />
+    <Content Include="Public\js\jpanelmenu.min.js" />
+    <Content Include="Public\js\jquery-3.2.1.min.js" />
+    <Content Include="Public\js\jquery-modal-video.min.js" />
+    <Content Include="Public\js\main-1.js" />
+    <Content Include="Public\js\main.js" />
+    <Content Include="Public\js\map.js" />
+    <Content Include="Public\js\new\bootstrap.min.js" />
+    <Content Include="Public\js\new\jquery-3.2.1.slim.min.js" />
+    <Content Include="Public\js\new\jquery-3.4.1.min.js" />
+    <Content Include="Public\js\new\popper.min.js" />
+    <Content Include="Public\js\plugin.js" />
+    <Content Include="Public\js\preloader.js" />
+    <Content Include="Public\js\rangeslider.js" />
+    <Content Include="Public\js\tabs.html" />
+    <Content Include="Public\plugins\datatables-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\css\responsive.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Public\plugins\jquery-ui\AUTHORS.txt" />
+    <Content Include="Public\plugins\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.js" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Public\plugins\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="Public\plugins\jquery-ui\LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Public\plugins\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Public\plugins\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote-lite.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote.css" />
+    <Content Include="Public\plugins\summernote\summernote.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.css" />
+    <Content Include="Public\plugins\summernote\summernote.min.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.LICENSE.txt" />
+    <Content Include="Public\webfonts\fa-brands-400.svg" />
+    <Content Include="Public\webfonts\fa-duotone-900.svg" />
+    <Content Include="Public\webfonts\fa-light-300.svg" />
+    <Content Include="Public\webfonts\fa-regular-400.svg" />
+    <Content Include="Public\webfonts\fa-solid-900.svg" />
+    <Content Include="Scripts\aspnet\dx.aspnet.data.js" />
+    <Content Include="Scripts\aspnet\dx.aspnet.mvc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Public\font\Flaticon.eot" />
+    <Content Include="Public\font\Flaticon.ttf" />
+    <Content Include="Public\font\Flaticon.woff" />
+    <Content Include="Public\font\Flaticond41d.eot" />
+    <Content Include="Public\font\iconsmindca27.eot" />
+    <Content Include="Public\font\iconsmindca27.ttf" />
+    <Content Include="Public\font\iconsmindca27.woff" />
+    <Content Include="Public\font\iconsmindd41d.eot" />
+    <Content Include="Public\font\Simple-Line-Iconsc05f.ttf" />
+    <Content Include="Public\font\Simple-Line-Iconsc05f.woff" />
+    <Content Include="Public\images\flight\2020" />
+    <Content Include="Public\images\flight\png" />
+    <Content Include="Public\plugins\summernote\font\summernote.eot" />
+    <Content Include="Public\plugins\summernote\font\summernote.ttf" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff2" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.map" />
+    <Content Include="Public\webfonts\fa-brands-400.eot" />
+    <Content Include="Public\webfonts\fa-brands-400.ttf" />
+    <Content Include="Public\webfonts\fa-brands-400.woff" />
+    <Content Include="Public\webfonts\fa-brands-400.woff2" />
+    <Content Include="Public\webfonts\fa-duotone-900.eot" />
+    <Content Include="Public\webfonts\fa-duotone-900.ttf" />
+    <Content Include="Public\webfonts\fa-duotone-900.woff" />
+    <Content Include="Public\webfonts\fa-duotone-900.woff2" />
+    <Content Include="Public\webfonts\fa-light-300.eot" />
+    <Content Include="Public\webfonts\fa-light-300.ttf" />
+    <Content Include="Public\webfonts\fa-light-300.woff" />
+    <Content Include="Public\webfonts\fa-light-300.woff2" />
+    <Content Include="Public\webfonts\fa-regular-400.eot" />
+    <Content Include="Public\webfonts\fa-regular-400.ttf" />
+    <Content Include="Public\webfonts\fa-regular-400.woff" />
+    <Content Include="Public\webfonts\fa-regular-400.woff2" />
+    <Content Include="Public\webfonts\fa-solid-900.eot" />
+    <Content Include="Public\webfonts\fa-solid-900.ttf" />
+    <Content Include="Public\webfonts\fa-solid-900.woff" />
+    <Content Include="Public\webfonts\fa-solid-900.woff2" />
+    <Content Include="Public\webfonts\SamsungOne-400.woff" />
+    <Content Include="Public\webfonts\SamsungOne-700.woff" />
+    <Content Include="Images\flight\2020" />
+    <Content Include="Images\flight\png" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Content\fonts\Roboto-300.ttf" />
+    <Content Include="Content\fonts\Roboto-300.woff" />
+    <Content Include="Content\fonts\Roboto-300.woff2" />
+    <Content Include="Content\fonts\Roboto-400.ttf" />
+    <Content Include="Content\fonts\Roboto-400.woff" />
+    <Content Include="Content\fonts\Roboto-400.woff2" />
+    <Content Include="Content\fonts\Roboto-500.ttf" />
+    <Content Include="Content\fonts\Roboto-500.woff" />
+    <Content Include="Content\fonts\Roboto-500.woff2" />
+    <Content Include="Content\fonts\Roboto-700.ttf" />
+    <Content Include="Content\fonts\Roboto-700.woff" />
+    <Content Include="Content\fonts\Roboto-700.woff2" />
+    <Content Include="Content\icons\dxicons.ttf" />
+    <Content Include="Content\icons\dxicons.woff" />
+    <Content Include="Content\icons\dxicons.woff2" />
+    <Content Include="Content\icons\dxiconsmaterial.ttf" />
+    <Content Include="Content\icons\dxiconsmaterial.woff" />
+    <Content Include="Content\icons\dxiconsmaterial.woff2" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\LichTrinh.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\GaTau.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTau\DanhSachTau.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTau\ThemTau.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ThemLichTrinh.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr.min.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\event.min.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\supplemental.min.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\cldr\unresolved.min.js" />
+    <Content Include="Scripts\dx-diagram.js" />
+    <Content Include="Scripts\dx-diagram.min.js" />
+    <Content Include="Scripts\dx-gantt.js" />
+    <Content Include="Scripts\dx-gantt.min.js" />
+    <Content Include="Scripts\dx-quill.js" />
+    <Content Include="Scripts\dx-quill.min.js" />
+    <Content Include="Scripts\dx.all.debug.js" />
+    <Content Include="Scripts\dx.all.js" />
+    <Content Include="Scripts\dx.viz.debug.js" />
+    <Content Include="Scripts\dx.viz.js" />
+    <Content Include="Scripts\dx.web.debug.js" />
+    <Content Include="Scripts\dx.web.js" />
+    <Content Include="Scripts\exceljs.js" />
+    <Content Include="Scripts\exceljs.min.js" />
+    <Content Include="Scripts\FileSaver.js" />
+    <Content Include="Scripts\FileSaver.min.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize.min.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\currency.min.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\date.min.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\message.min.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\number.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jspdf.plugin.autotable.js" />
+    <Content Include="Scripts\jspdf.plugin.autotable.min.js" />
+    <Content Include="Scripts\jspdf.umd.js" />
+    <Content Include="Scripts\jspdf.umd.min.js" />
+    <Content Include="Scripts\jszip.js" />
+    <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\localization\dx.messages.ar.js" />
+    <Content Include="Scripts\localization\dx.messages.ca.js" />
+    <Content Include="Scripts\localization\dx.messages.cs.js" />
+    <Content Include="Scripts\localization\dx.messages.de.js" />
+    <Content Include="Scripts\localization\dx.messages.el.js" />
+    <Content Include="Scripts\localization\dx.messages.en.js" />
+    <Content Include="Scripts\localization\dx.messages.es.js" />
+    <Content Include="Scripts\localization\dx.messages.fi.js" />
+    <Content Include="Scripts\localization\dx.messages.fr.js" />
+    <Content Include="Scripts\localization\dx.messages.hu.js" />
+    <Content Include="Scripts\localization\dx.messages.it.js" />
+    <Content Include="Scripts\localization\dx.messages.ja.js" />
+    <Content Include="Scripts\localization\dx.messages.lt.js" />
+    <Content Include="Scripts\localization\dx.messages.nb.js" />
+    <Content Include="Scripts\localization\dx.messages.nl.js" />
+    <Content Include="Scripts\localization\dx.messages.pt.js" />
+    <Content Include="Scripts\localization\dx.messages.ro.js" />
+    <Content Include="Scripts\localization\dx.messages.ru.js" />
+    <Content Include="Scripts\localization\dx.messages.sl.js" />
+    <Content Include="Scripts\localization\dx.messages.sv.js" />
+    <Content Include="Scripts\localization\dx.messages.tr.js" />
+    <Content Include="Scripts\localization\dx.messages.vi.js" />
+    <Content Include="Scripts\localization\dx.messages.zh-tw.js" />
+    <Content Include="Scripts\localization\dx.messages.zh.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\vectormap-data\africa.js" />
+    <Content Include="Scripts\vectormap-data\canada.js" />
+    <Content Include="Scripts\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\vectormap-data\europe.js" />
+    <Content Include="Scripts\vectormap-data\usa.js" />
+    <Content Include="Scripts\vectormap-data\world.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Info\Index.cshtml" />
+    <Content Include="Views\AuthCustomer\Login.cshtml" />
+    <Content Include="Views\Ticket\Search.cshtml" />
+    <Content Include="Views\Ticket\Detail.cshtml" />
+    <Content Include="Views\AuthCustomer\Register.cshtml" />
+    <Content Include="Views\Ticket\Checkout.cshtml" />
+    <Content Include="Views\Ticket\BookingSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Models\VMs\" />
+    <Folder Include="Views\Booking\" />
+    <Folder Include="Views\News\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52359</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44322/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

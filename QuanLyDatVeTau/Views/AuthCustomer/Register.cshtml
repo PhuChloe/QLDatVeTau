@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
+<section class="login-block">
+
+    <div class="container">
+        <div class="row">
+            <div style="padding:10px 10px" class="col-md-4 login-sec">
+                <h2 class="text-center">Đăng ký tài khoản</h2>
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
+                <form method="post" action="/AuthCustomer/HandleRegister" class="login-form">
+                    <div class="form-group">
+                        <label for="Fullname" class="text-uppercase">Họ và tên</label>
+                        <input type="text" required class="form-control" name="Fullname">
+                    </div>
+                    <div class="form-group">
+                        <label for="Username" onkeyup="if (/[^|a-z0-9]+/g.test(this.value)) this.value = this.value.replace(/[^|a-z0-9]+/g,'')" class="text-uppercase">Tài khoản</label>
+                        <input type="text" autocomplete="off" required class="form-control" name="Username">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="text-uppercase">Mật khẩu</label>
+                        <input type="password" autocomplete="off" required class="form-control" name="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone" class="text-uppercase">Số điện thoại</label>
+                        <input type="number"  maxlength="10" required class="form-control" name="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="text-uppercase">Email</label>
+                        <input type="email" class="form-control" name="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Gender" class="text-uppercase">Giới tính</label>
+
+                        <select required name="Gender" class="form-control">
+                            <option value="1">Nam</option>
+                            <option value="2">Nữ</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="form-check">
+
+                        <div>
+                            <button type="submit" class="btn-blue btn-red btn-style-1 pt-2">Đăng ký</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div>
+                        <div>
+                            <img class="d-block img-fluid" src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/6/19/1058244/23.6.Du_Lich_Duong_S.jpg" width="650" height="400">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

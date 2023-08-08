@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QuanLyDatVeTau.Models.DTOs
+<section class="mt_search" style="margin-top:50px !important; ">
+
+    <div class="container card bg-white" style="padding:30px !important; ">
+        <div class="search-content-slider">
+            <div class="section-title text-center ">
+              
+                <h2>Tìm Kiếm Chuyến Đi</h2>
+                <p>Nhập Thông Tin Vào Form Dưới</p>
+            </div>
+            <form action="/Ticket/Search" method="get" id="form-search">
+                <div class="radio" align="center">
+                    <label><input value="MotChieu" type="radio" id="LoaiVe"  name="LoaiVe" checked>Chiều Đi</label>
+                    <label><input value="KhuHoi" type="radio" id="LoaiVe" name="LoaiVe">Khứ Hồi</label>
+
+                </div>
+                <input type="hidden" id="ticketCheck" value="" />
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                @*CHỌN GA ĐI*@
+                                <select name="startStation" class="selectpicker form-control" tabindex="1" required>
+
+                                    @foreach (GaTauDTO item in ViewBag.GaTau)
+                                    {
+                                        <option value="@item.MaGaTau">@item.TenGa</option>
+                                    }
+
+                                </select>
+                                <i class="flaticon-maps-and-flags"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                      @*CHỌN GA ĐẾN*@
+                                <select name="endStation" class="selectpicker form-control" tabindex="1">
+
+
+                                    @foreach (GaTauDTO item in ViewBag.GaTau)
+                                    {
+                                        <option value="@item.MaGaTau">@item.TenGa</option>
+                                    }
+                                </select>
+                                <i class="flaticon-maps-and-flags"></i>
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group ">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    @*Chọn ngày đi*@
+                                    <input type="text"  id="startDate" name="startDate" class="form-control" placeholder="Ngày Đi" onclick="return 0" required />
+                                    <i class="flaticon-calendar"></i>
+
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+
+                                </div>
+                         
+                                <span class="text-danger" id="ngaybay"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    @*Chọn ngày về*@
+                                    <input type='text' id="endDate"  name="endDate" class="form-control" placeholder="Ngày Về" required />
+                                    <i class="flaticon-calendar"></i>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+
+                                </div>
+                                <span class="text-danger" id="ngayve"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12  ">
+                    <div class="table_item " align="center">
+                        <div class="search ">
+                            <button type="submit" class="btn-blue btn-red ">Tra Cứu</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Top Destinations -->
+<section class="flight-destinations">
+
+    <div class="container bg-white">
+        <div class="row">     
+                <div class="col-md-12">
+                    <div class="flight-head">
+                        <div class="">
+                            <div class="col-md-10">
+                                <nav aria-label="breadcrumb">
+                                    <span style="font-weight:bold; font-size:22px;color:#ff6a00;">
+                                    <i class="fa-solid fa-train-subway"></i> 
+                                    Lịch trình hôm nay @ViewBag.Today
+                                    </span>
+                                </nav>
+                            </div>     
+                        </div>
+                    </div>
+
+                </div>
+                
+            @if (ViewBag.LichTrinhHomNay != null) {
+            
+            <div class="flight-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Xuất Phát</th>
+                            <th>Đến</th>
+                            <th>Tàu</th>
+                            <th>Chi Tiết</th>
+ 
+
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+
+                          @foreach (LichTrinh item in ViewBag.LichTrinhHomNay)
+                                {
+                                    <tr>
+                                        <td>
+                                            <h6>@item.NgayDi</h6>
+                                            <p>@item.TenGaDi</p>
+                                        </td>
+                                        <td>
+                                            <h6>@item.NgayDen</h6>
+                                            <P>@item.TenGaDen</P>
+                                        </td>
+                                        <td>
+                                            <h6>@item.TenTau</h6>
+                                        </td>
+                                        <td>
+                                            <a target="_blank" href="/Ticket/Detail/@item.MaLichTrinh"><strong class="color-red-3">Chi tiết</strong></a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                    </tbody>
+                </table>
+            </div>
+              
+            }
+                
+        
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $("#endDate").attr('disabled', true);
+    $("form input:radio").change(function () {
+        if ($(this).val() == "KhuHoi") {
+            $("#endDate").attr('disabled', false);
+      
+        }
+        else {
+            $("#endDate").attr('disabled', true);
+          
+        }
+    });
+</script>

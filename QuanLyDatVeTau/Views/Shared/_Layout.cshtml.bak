@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/logo.png">
+    <!-- Bootstrap core CSS -->
+    <link href="~/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!--Custom CSS-->
+    <link href="~/public/css/flight.css" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="font/flaticon.css" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="~/public/css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <script src="~/public/js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body style="background-color: #FAFAFA;">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- Header -->
+    <header>
+        <!--Header-->
+        <div class="upper-head clearfix " style="background-color:#0404B4;">
+            <div class="container ">
+                <div class="upper-head-inner">
+                    <div class="contact-info pull-left">
+                        <div class="contact-info-item"><i class="flaticon-phone-call"></i></div>
+                        <i class="flaticon-mail"></i><p> Mail: <span>contact@huflit.edu.vn</span></p>
+                    </div>
+                    <div class="login-btn pull-right">
+                        @if (Session["username"] != null)
+                        {
+
+                            <p> Xin Chào: @Session["username"]  </p>
+                            <a href="/Info"><i class="fas fa-user"></i> Tài Khoản</a>
+                            <a href="/Auth/Logout">Đăng Xuất</a>
+                        }
+                        else
+                        {
+                            <a style="color:white" href="/Auth/Login"><i class="fa fa-unlock-alt"></i> Đăng Nhập</a>
+                            <a style="color:white" href="/Auth/Register"><i class="fa fa-user-plus"></i> Đăng Ký</a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- Navigation Bar -->
+
+        <div class="navigation bg-white" style="padding-bottom: 10px;">
+            <div class="container ">
+                <div class="navigation-content">
+                    <div class="header_menu">
+                        <!-- start Navbar (Header) -->
+                        <nav class="navbar navbar-default navbar-sticky-function navbar-arrow">
+                            <div class="logo pull-left">
+                                <a href="~/"><img alt="Image" src="~/Public/images/logo.png" height="50" width="90"></a>
+                            </div>
+                            <div id="navbar" class="navbar-nav-wrapper">
+                                <ul class="nav navbar-nav " id="responsive-menu">
+                                    <li>
+                                        <a href="/Home" style="color: #000000; ">TRANG CHỦ</a>
+                                      
+                                    </li>   
+                                    <li>
+                                        <a href="/News" style="color: #000000; ">TIN TỨC - VÉ TÀU</a>
+                                      
+
+                                    </li>  
+                                    <li>
+                                        <a href="/Home/Contact" style="color: #000000; ">THÔNG TIN LIÊN HỆ</a>
+                                       
+
+                                    </li>  
+                                    <li>
+                                        <a href="/Trip" style="color: #000000; ">CHUYẾN ĐI TRONG NGÀY</a>
+
+                                    </li>  
+                               
+                                </ul>
+
+                            </div>
+
+                            <div id="slicknav-mobile"></div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Navigation Bar Ends -->
+    </header>
+    <!-- Header Ends -->
+    <!-- Slider -->
+
+    <style>
+        .carousel-inner > .item > img {
+            height: 470px;
+        }
+    </style>
+    <!-- Carousel container -->
+    <div id="my-pics" class="carousel slide" data-ride="carousel" style="width:100%;margin:auto;height:auto">
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#my-pics" data-slide-to="0" class="active"></li>
+            <li data-target="#my-pics" data-slide-to="1"></li>
+            <li data-target="#my-pics" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Content -->
+        <div class="carousel-inner" role="listbox">
+
+            <!-- Slide 1 -->
+            <div class="item active">
+                <img src="~/Images/flight/TauLuaBanner03.jpg" alt="Đường Sắt Việt Nam">
+                <div class="carousel-caption">
+                    <h3 style="color:white">Đường Sắt Việt Nam</h3>
+                    <p style="color:white">Hệ Thống Đường Sắt Lớn Nhất Tại VIỆT NAM</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="item">
+                <img src="~/Images/flight/TauLuaBanner02.jpg" alt="Rob Roy Glacier">
+                <div class="carousel-caption">
+                    <h3 style="color:white">Chuyến Tàu Hà Nội</h3>
+                    <p style="color:white">Xuất Phát Từ Ga Hà Nội</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="item">
+                <img src="~/Images/flight/TauLuaBanner01.jpg" alt="Longtail boats at Phi Phi">
+                <div class="carousel-caption">
+                    <h3 style="color:white">Chuyến Tàu Thương Mại</h3>
+                    <p style="color:white">Giao Thương Ngoài Nước</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Previous/Next controls -->
+        <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
+            <span class="icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#my-pics" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+
+    <script>
+        // Initialize tooltip component
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        // Initialize popover component
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+
+
+    <!-- End Slider -->
+    @RenderBody()
+    <!-- Top Destination Ends -->
+
+    <!-- Footer -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Roboto;
+        }
+
+        body {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            /*background: url(https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/tao_footer_cho_website/Aare.svg);*/
+        }
+
+        footer {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding: 10px 100px;
+            background: #111;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+            footer .container {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                flex-direction: row;
+            }
+                /*Thiết Lập Cho Thành Phần Nội Dung Giới Thiệu*/
+                footer .container .noi-dung {
+                    margin-right: 30px;
+                }
+
+                    footer .container .noi-dung.about {
+                        width: 40%;
+                    }
+
+                        footer .container .noi-dung.about h2 {
+                            position: relative;
+                            color: #fff;
+                            font-weight: 500;
+                            margin-bottom: 15px;
+                        }
+
+                            footer .container .noi-dung.about h2:before {
+                                content: '';
+                                position: absolute;
+                                bottom: -5px;
+                                left: 0;
+                                width: 50px;
+                                height: 2px;
+                                background: #f00;
+                            }
+
+                        footer .container .noi-dung.about p {
+                            color: #999;
+                        }
+        /*Thiết Lập Cho Thành Phần Icon Mạng Xã Hội*/
+        .social-icon {
+            margin-top: 20px;
+            display: flex;
+        }
+
+            .social-icon li {
+                list-style: none;
+            }
+
+                .social-icon li a {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    background: #222;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 10px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                }
+
+                    .social-icon li a:hover {
+                        background: #f00;
+                    }
+
+                    .social-icon li a .fa {
+                        color: #fff;
+                        font-size: 20px;
+                    }
+
+        .links h2 {
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .links h2 {
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+            .links h2::before {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 50px;
+                height: 2px;
+                background: #f00;
+            }
+
+        .links {
+            position: relative;
+            width: 25%;
+        }
+
+            .links ul li {
+                list-style: none;
+            }
+
+                .links ul li a {
+                    color: #999;
+                    text-decoration: none;
+                    margin-bottom: 10px;
+                    display: inline-block;
+                }
+
+                    .links ul li a:hover {
+                        color: #fff;
+                    }
+
+        .contact h2 {
+            position: relative;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+            .contact h2::before {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 50px;
+                height: 2px;
+                background: #f00;
+            }
+
+        .contact {
+            width: calc(35% - 60px);
+            margin-right: 0 !important;
+        }
+
+            .contact .info {
+                position: relative;
+            }
+
+                .contact .info li {
+                    display: flex;
+                    margin-bottom: 16px;
+                }
+
+                    .contact .info li span:nth-child(1) {
+                        color: #fff;
+                        font-size: 20px;
+                        margin-right: 10px;
+                    }
+
+                    .contact .info li span {
+                        color: #999;
+                    }
+
+                    .contact .info li a {
+                        color: #999;
+                        text-decoration: none;
+                    }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            border: 0;
+            outline: 0;
+            padding: 0;
+            margin-top: 16px;
+            transition: all 200ms ease-in;
+            cursor: pointer;
+        }
+
+        .btn--primary {
+            background: #222;
+            color: #fff;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+            border-radius: 2px;
+            padding: 8px 24px;
+        }
+
+            .btn--primary:hover {
+                background: #f00;
+            }
+
+            .btn--primary:active {
+                background: #f00;
+                box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+            }
+
+        .form__field {
+            width: 90%;
+            background: #fff;
+            color: #a3a3a3;
+            font: inherit;
+            box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+            border: 0;
+            outline: 0;
+            padding: 8px 4px;
+        }
+
+        @@media (max-width: 768px) {
+            footer {
+                padding: 40px;
+            }
+
+                footer .container {
+                    flex-direction: column;
+                }
+
+                    footer .container .noi-dung {
+                        margin-right: 0;
+                        margin-bottom: 40px;
+                    }
+
+                footer .container, .noi-dung.about, .links, .contact {
+                    width: 100%;
+                }
+        }
+    </style>
+    <footer>
+        <div class="container">
+            <!--Bắt Đầu Nội Dung Giới Thiệu-->
+            <div class="noi-dung about">
+                <h2>DUONGSATVIETNAM</h2>
+                <p>
+                    WEBSITE Đường Sắt Việt Nam nhằm <br />cung cấp thông tin các lịch trình chuyến đi <br /> trong nước thuộc cục đường sắt VIỆT NAM.
+                </p>
+            </div>
+            <!--Kết Thúc Nội Dung Giới Thiệu-->
+            <!--Bắt Đầu Nội Dung Đường Dẫn-->
+            <div class="noi-dung links">
+                <h2>Link</h2>
+                <ul>
+                    <li><a href="~/home/index">Trang Chủ</a></li>
+                    <li><a href="chualam">Liên Hệ</a></li>
+                    @* <li><a href="~/tin-tuc/tin-khuyen-mai">Tin Tức - Khuyến Mãi</a></li>*@
+                    <li><a href="/chualam">Tin Tức - Vé Tàu</a></li>
+                    @*<li><a href="~/tin-tuc/ve-quoc-te">International Tickets</a></li>*@
+                    <li><a href="/chuyenditrongngay">Chuyến đi trong ngày</a></li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Đường Dẫn-->
+            <!--Bắt Đâu Nội Dung Liên Hệ-->
+            <div class="noi-dung contact">
+                <h2>Thông Tin Liên Hệ</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker"></i></span>
+                        <span>
+                            828 Sư Vạn Hạnh, Phường 13, Quận 10, TP. HCM
+                        </span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        <p>
+                            <a href="#">(028) 3863 2052 - (028) 3862 9232</a>
+                        </p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        <p><a href="#">contact@huflit.edu.vn.com</a></p>
+                    </li>
+                    @*<li>
+                            <form class="form">
+                                <input type="email" class="form__field" placeholder="Nhận Thông Báo Email" />
+                                <button type="button" class="btn btn--primary  uppercase">Gửi</button>
+                            </form>
+                        </li>*@
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Liên Hệ-->
+        </div>
+    </footer>
+    <!-- Footer Ends -->
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    <!-- *Scripts* -->
+
+    <script src="~/public/js/bootstrap.min.js"></script>
+    <script src="~/public/js/plugin.js"></script>
+    <script src="~/public/js/main.js"></script>
+    <script src="~/public/js/custom-accordian.js"></script>
+    <script src="~/public/js/preloader.js"></script>
+</body>
+</html>

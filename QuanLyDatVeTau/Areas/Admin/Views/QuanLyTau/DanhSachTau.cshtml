@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "DanhSachTau";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<h2>DANH SÁCH CÁC TÀU</h2>
+<div id="toast"></div>
+
+<a class="btn btn-success" href="/Admin/QuanLyTau/ThemTau" role="button">Thêm tàu</a>
+<div id="gridContainer"></div>
+
+
+<script>
+    $(document).ready(async function () {
+
+
+    
+        const demGheTau = await getData("/Admin/QuanLyTau/DemGheTau")
+
+        let dataSource = await getData("/Admin/QuanLyTau/LayDanhSachTau")
+
+
+
+      dataSource=  dataSource.map(item => {
+            let demGhe = demGheTau.filter(f => f.MaTau == item.MaTau)
+
+            var obj = {}
+             demGhe.forEach(o => {
+                 obj[o.TenLoaiGhe]=o.SoLuong
+             })
+
+            console.log(obj)
+
+          
+
+            return { ...item,...obj}
+        })
+
+    
+        $("#gridContainer").dxDataGrid({
+            dataSource,
+            showBorder: true,
+        /*    columns: [
+                {
+                    dataField: "MaTau", caption: "Mã tàu", dataType: "number", editorOptions: {
+
+                        readOnly: true
+                    }
+                },
+                { dataField: "TenTau", caption: "Tên tàu" },
+                { dataField: "SucChua", caption: "Sức chứa", },
+             
+            ],*/
+            filterRow: { visible: true },
+
+            columnAutoWidth: true,
+            paging: { pageSize: 20 },
+
+        });
+
+
+      
+
+
+    });
+
+</script>

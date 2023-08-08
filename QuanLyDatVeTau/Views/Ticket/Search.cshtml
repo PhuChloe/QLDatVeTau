@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QuanLyDatVeTau.Models.DTOs
+<section class="flight-destinations">
+
+    <div class="container bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="flight-head">
+                    <div class="">
+                        <div class="col-md-10">
+                            <nav aria-label="breadcrumb">
+                                <span style="font-weight:bold; font-size:22px;color:#ff6a00;">
+                                    <i class="fa-solid fa-train-subway"></i>
+                                    Chiều đi @ViewBag.GaDi ---> @ViewBag.GaVe
+                                </span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            @if (ViewBag.ChieuDi != null)
+            {
+                <div class="flight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Xuất Phát</th>
+                                <th>Đến</th>
+                                <th>Tàu</th>
+                                <th>Chi Tiết</th>
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (LichTrinh item in ViewBag.ChieuDi)
+                            {
+                                <tr>
+                                    <td>
+                                        <h6>@item.NgayDi</h6>
+                                        <p>@item.TenGaDi</p>
+                                    </td>
+                                    <td>
+                                        <h6>@item.NgayDen</h6>
+                                        <P>@item.TenGaDen</P>
+                                    </td>
+                                    <td>
+                                        <h6>@item.TenTau</h6>
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="/Ticket/Detail/@item.MaLichTrinh"><strong class="color-red-3">Chi tiết</strong></a>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            }
+            else
+            { <h3>Không có kết quả</h3>}
+
+            @if (ViewBag.HideKhuHoi != true)
+            {
+
+                <div class="col-md-12">
+                    <div class="flight-head">
+                        <div class="">
+                            <div class="col-md-10">
+                                <nav aria-label="breadcrumb">
+                                    <span style="font-weight:bold; font-size:22px;color:#ff6a00;">
+                                        <i class="fa-solid fa-train-subway"></i>
+                                        Chiều về @ViewBag.GaVe ---> @ViewBag.GaDi
+                                    </span>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                if (ViewBag.ChieuVe != null)
+                {
+
+                    <div class="flight-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Xuất Phát</th>
+                                    <th>Đến</th>
+                                    <th>Tàu</th>
+                                    <th>Chi Tiết</th>
+
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (LichTrinh item in ViewBag.ChieuVe)
+                                {
+                                    <tr>
+                                        <td>
+                                            <h6>@item.NgayDi</h6>
+                                            <p>@item.TenGaDi</p>
+                                        </td>
+                                        <td>
+                                            <h6>@item.NgayDen</h6>
+                                            <P>@item.TenGaDen</P>
+                                        </td>
+                                        <td>
+                                            <h6>@item.TenTau</h6>
+                                        </td>
+                                        <td>
+                                            <a target="_blank" href="/Ticket/Detail/@item.MaLichTrinh"><strong class="color-red-3">Chi tiết</strong></a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                { <h3>Không có kết quả</h3>}
+
+
+            }
+        </div>
+    </div>
+
+</section>

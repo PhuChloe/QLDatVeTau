@@ -1,0 +1,216 @@
+﻿
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <link href="~/Public/css/bo2otstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/fStyle.css" rel="stylesheet" />
+
+    <!-- css datable -->
+    <link rel="stylesheet" href="~/public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link href="~/Public/plugins/summernote/summernote-bs4.min.css" rel="stylesheet" />
+    <script src="~/Public/js/new/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- DevExtreme theme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/23.1.4/css/dx.light.css">
+
+    <!-- DevExtreme library -->
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/23.1.4/js/dx.all.js"></script>
+
+    @*
+        @Styles.Render("~/Content/DevExtremeBundle")
+        @Scripts.Render("~/Scripts/DevExtremeBundle")
+    *@
+    <style>
+        .ul-left-menu a:hover {
+            background-color: #675959;
+        }
+
+        .ul-left-menu > li {
+            cursor: pointer;
+        }
+
+            .ul-left-menu > li > a {
+                font-size: 23px;
+                display: inline-block;
+                width: 100%;
+                height: 40px;
+                color: #fff;
+                line-height: 40px;
+            }
+
+                .ul-left-menu > li > a > span {
+                    margin-left: 5px;
+                }
+
+        .active {
+            background-color: #675959;
+        }
+    </style>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Admin</title>
+</head>
+<body >
+
+
+    <section class="container-fluid ">
+        <div class="row">
+            <!-- Image and text -->
+            <nav class="navbar navbar-light py-0  w-100 border-bottom bg-blues">
+                <a class="navbar-brand text-white font-weight-bold" href="/Admin/Dashboard">ADMIN QUẢN LÝ <span style="color:#326690; border-bottom-left-radius:50px;" class="bg-white px-3">DSVN</span></a>
+                <ul class="list-unstyled m-0">
+
+                    <li class="nav-item dropdown ">
+
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu" style="position: absolute;top: 40px;left: -90px;" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="~/Admin/Auth/Logout"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="main-content container-fluid">
+            <div class="row">
+
+
+                <div class="col-md-2"   style="min-height:900px; background-color:#333;">
+
+                    <ul class="list-unstyled ul-left-menu">
+                    
+                        <li id="contact" class="py-2  item_left row "><a class="pl-3 isHome" isHome="isHome" href="/Admin/Dashboard"><i class='bx bx-home-alt-2'></i><span>Trang chủ</span></a></li>
+                        <li id="contact" class="py-2  item_left row "><a class="pl-3"  href="/Admin/QuanLyTau/DanhSachTau"><i class='bx bx-train'></i><span>Danh sách tàu</span></a></li>
+                        <li id="contact" class="py-2  item_left row "><a class="pl-3"  href="/Admin/QuanLyTau/ThemTau"><i class='bx bxs-add-to-queue'></i><span>Thêm tàu</span></a></li>
+                        <li id="contact" class="py-2 item_left row "><a class="pl-3 " href="/Admin/Dashboard/LichTrinh"><i class='bx bx-calendar-check'></i><span>Lịch trình</span></a></li>
+                        <li id="contact" class="py-2 item_left row "><a class="pl-3 " href="/Admin/Dashboard/ThemLichTrinh"><i class='bx bx-calendar-plus'></i><span>Thêm lịch trình</span></a></li>
+                   @*     <li id="post" class="py-2 item_left  row "><a class="pl-3 " href="/Admin/Dashboard/VeTau"><i class='bx bxs-discount'></i><span> Vé tàu </span> </a></li>*@
+                        <li id="post" class="py-2 item_left  row "><a class="pl-3 " href="/Admin/Dashboard/GaTau"><i class='bx bx-train'></i> <span>Ga tàu</span></a></li>
+
+                        @*<li id="post" class="py-2 border-bottom row "><a class="pl-3 " href="~/Admin/Airport"><i class="fas fa-ticket-alt"></i> Lịch Trình</a></li>
+
+                        <li id="user" class="py-2 border-bottom row "><a class="pl-3 " href="~/Admin/User"><i class="fas fa-user"></i> Tài Khoản</a></li>
+                        <li id="post" class="py-2 border-bottom row "><a class="pl-3 " href="~/Admin/Orders"><i class="fas fa-shopping-basket"></i>Vé Đặt</a></li>
+                        <li id="post" class="py-2 border-bottom row "><a class="pl-3 " href="~/Admin/Auth/EditUser"> <i class="fas fa-user-circle"></i> Thông Tin Account</a></li>*@
+
+                    </ul>
+                </div>
+               
+
+
+
+
+                <div class="col-md-10 ">
+                    <div class="p-4">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Load Facebook SDK for JavaScript -->
+
+    <script src="~/public/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/public/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/public/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Public/plugins/summernote/summernote-bs4.min.js"></script>
+
+    
+
+    <script>
+    $(document).ready(function () {
+            $('#myTable1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });</script>
+</body>
+</html>
+
+<script>
+    /*===== LINK ACTIVE =====*/
+    const pathname = window.location.pathname.toLowerCase();
+    const navLink = document.querySelectorAll('.item_left>a');
+
+    if (pathname == '/Admin/Dashboard'.toLowerCase()) {
+        document.querySelector('.isHome').classList.add('active')
+    }
+    else {
+        navLink.forEach(item => {
+            const href = item.getAttribute("href").toLowerCase();
+            const isHome = item.getAttribute("isHome")
+            if (pathname.startsWith(href) && !isHome) item.classList.add('active')
+        })
+    }
+
+</script>
+
+<script>
+    async function postData(url, body) {
+        try {
+            const data = await $.ajax({
+                url: url,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(body)
+            });
+            return data;
+        } catch (error) {
+            console.log(error);
+          
+        }
+    }
+
+
+    async function getData(url) {
+        try {
+            const data = await $.get(url);
+            return data;
+        } catch (error) {
+            console.log(error);
+       
+        }
+    }
+
+
+    const toast = $('#toast').dxToast({ displayTime: 3000 }).dxToast('instance');
+
+
+
+
+
+    function showError(mess) {
+        toast.option({ message: mess, type: "warning" });
+        toast.show();
+
+    }
+
+
+    function showSuccess(mess) {
+        toast.option({ message: mess, type: "success" });
+        toast.show();
+
+    }
+</script>

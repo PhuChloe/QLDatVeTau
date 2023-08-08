@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QuanLyDatVeTau.Models.DTOs;
+
+<script>
+    $('#my-pics').hide();
+</script>
+<style>
+ 
+    .h-50 {
+        height: 50px;
+        width: 100%;
+        background: red;
+    }
+
+ .mt-2{
+     margin-top:10px;
+     font-size:20px;
+ }
+</style>
+
+@if (ViewBag.Error != null)
+{
+    <div style="height:500px; padding:10px 10px;">
+        <h3 class="text-danger">@ViewBag.Error</h3>
+    </div>
+}
+else
+{
+    ChiTietLichTrinh chiTiet = ViewBag.Data;
+    InfoDTO infoDTO = ViewBag.infoDTO;
+    infoDTO.Phone = "0" + infoDTO.Phone;
+
+    <div style="min-height :500px; padding:10px 10px;">
+        <section class="flight-destinations">
+
+            <div style="padding:10px 10px;" class="container bg-white">
+                <div class="col-md-12">
+                    <div style="font-weight:bold; font-size:22px;color:#ff6a00;">
+                        <i class="fa-solid fa-train-subway"></i>
+                        Lịch trình từ @chiTiet.LichTrinh.TenGaDi đến @chiTiet.LichTrinh.TenGaDen
+                    </div>
+                    <i>@chiTiet.LichTrinh.NgayDi - @chiTiet.LichTrinh.NgayDen</i>
+                </div>
+
+                <div class="row">
+                    <input type="hidden" id="malichTrinh" value="@chiTiet.LichTrinh.MaLichTrinh" />
+                    <div class="col-md-6">
+                        <div style="min-height:300px;padding:0 10px 10px; border-radius:5px; border:1px solid #666" class="cart_container">
+                            <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight:bold" class="text-primary text-center">
+                                GIỎ VÉ
+                            </h3>
+                            <div class="list_ticket">
+
+
+                            </div>
+                            <div class="total_price">
+                                Tổng tiền: 0 VND
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:center" class="w-100">
+                                <div id="btn-checkout" class="btn-blue btn-red">Đặt vé</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div style="font-size:20px">Khách hàng: <b>@infoDTO.FullName</b></div>
+                        <div class="mt-2">Số điện thoại:<b>  @infoDTO.Phone</b> </div>
+                        <div class="mt-2">Email:<b>  @infoDTO.Email</b> </div>
+                        <div class="mt-2">Giới tính:<b> Nam</b> </div>
+               
+                        <div class="col-xs-12 mt-2">
+                            <div class="checkbox-outer">
+                                <input type="radio" name="payment" value="checkinPayment" checked><label> Thanh toán tại quầy</label><br />
+                                <input type="radio" value="credit" disabled><label class="text-secondary"> <strike>Thanh toán chuyển khoản</strike> (Not Support Now)</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </section>
+    </div>
+
+
+
+}
+
+<script>
+
+
+    var malichTrinh = document.querySelector('#malichTrinh').value;
+
+    var cart = getLocalStorage('cart');
+
+
+    cart?.listTicket.forEach(data => {
+        const giaGhe = Number(data.GiaGhe)*1000
+        var html = `  <div id="${data.MaGhe}"" style="border-bottom:1px dashed #333; padding:5px 5px" class="ticket_item">
+                                    <div>${data.TenLoaiGhe}</div>
+                                    <div>Chỗ ngồi: ${data.SoGhe}</div>
+                                    <div>Giá: ${giaGhe.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</div>
+                                </div>`
+
+        var list_ticket = document.querySelector('.list_ticket');
+
+        var div = document.createElement("div");
+        div.innerHTML = html;
+        list_ticket.append(div)
+    })
+
+
+    if (cart?.total) {
+        const total = Number(cart.total) * 1000;
+        document.querySelector('.total_price').innerHTML = `Tổng tiền: ${total.toLocaleString('vi', { style: 'currency', currency: 'VND' })}`
+    }
+
+
+
+    let checkout = document.querySelector('#btn-checkout');
+    checkout.addEventListener('click',async (e) => {
+        if (!cart?.listTicket || cart.listTicket.length <= 0){
+            alert("Không có vé nào trong giỏ vé")
+        }
+        else {
+            var data = {
+                TongTien: cart.total,
+                MaLichTrinh: malichTrinh,
+                Tickets: cart.listTicket.map(item => {
+                    return { MaGhe: item.MaGhe, GiaVe: item.GiaGhe }
+                })
+            }
+
+            fetch('/Ticket/XuLyDatVe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const maDateVe = result.maDateVe;
+                    console.log(result)
+                    window.location.href = '/Ticket/BookingSuccess/' + maDateVe;
+                })
+                .catch(error => {
+                  
+                    console.error('Error:', error);
+                });
+        }
+    })
+
+
+    function setLocalStorage(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+    function getLocalStorage(key) {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : null;
+    }
+    function removeLocalStorageItem(key) {
+        localStorage.removeItem(key);
+    }
+
+</script>

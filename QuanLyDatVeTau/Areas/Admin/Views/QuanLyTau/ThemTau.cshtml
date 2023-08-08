@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "ThemTau";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using QuanLyDatVeTau.Models.DTOs
+@{
+    List<LoaiGheDTO> loaiGhe = ViewBag.LoaiGhe;
+}
+<h2>THÊM TÀU</h2>
+<div id="toast"></div>
+
+<form name="form_them_tau">
+    <div class="form-group">
+        <input type="text" class="form-control" required id="tenTau" name="tenTau" placeholder="Nhập tên tàu">
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control" required id="sucChua" name="sucChua" placeholder="Sức chứa của tàu">
+    </div>
+
+    @foreach (var item in loaiGhe)
+    {
+
+        <div class="form-group">
+            <input type="number" class="form-control" required id="@item.MaLoaiGhe" name="@item.MaLoaiGhe" placeholder="@item.TenLoaiGhe">
+        </div>
+    }
+    <button id="btn_them_tau" type="submit" class="btn btn-primary">Thêm tàu</button>
+</form>
+
+
+
+<script>
+
+
+    $(document).ready(async function () {
+        $('form[name="form_them_tau"]').submit(async function (e) {
+            e.preventDefault(); // Ngăn chặn gửi form một cách mặc định
+            var formDataArray = $(this).serializeArray();
+            var formData = {}
+
+            for (var i = 0; i < formDataArray.length; i++) {
+                formData[formDataArray[i].name] = formDataArray[i].value;
+            }
+
+            var cacLoaiGheTau = [];
+            let tongGhe = 0;
+            for (var key in formData) {
+                if (key != 'tenTau' && key != 'sucChua') {
+                    tongGhe += Number(formData[key])
+                    cacLoaiGheTau.push(
+                        {
+                            MaLoaiGhe: Number(key),
+                            SoLuong: Number(formData[key])
+                        }
+                    )
+
+                }
+            }
+   
+            if (Number(tongGhe) > Number(formData.sucChua)) {
+                showError("Số ghế vượt quá sức chứa của tàu")
+            }
+            else {
+                var data = {
+                    TenTau: formData.tenTau,
+                    SucChua: Number(formData.sucChua),
+                    CacLoaiGheTau: cacLoaiGheTau
+                }
+
+
+
+                try {
+
+                    var res = await postData('/QuanLyTau/XuLyThemTau', data)
+
+                    showSuccess("Thêm thành tàu thành công")
+                    // Clear form data bằng phương thức reset()
+                    this.reset();
+
+                }
+                catch (err) {
+                    console.log(err)
+                    showError("Lỗi server thêm thất bại")
+                }
+            }
+
+
+
+
+        });
+    });
+
+
+
+</script>

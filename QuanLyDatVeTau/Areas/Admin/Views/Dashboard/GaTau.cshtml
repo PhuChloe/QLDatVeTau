@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "LichTrinh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>DANH SÁCH GA TÀU</h2>
+<div id="toast"></div>
+<div id="gridContainer"></div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "/Admin/Dashboard/LayGaTau",
+            dataType: "json",
+            success: function (result) {
+                $("#gridContainer").dxDataGrid({
+                    dataSource: result,
+                    columns: [
+                        { dataField: "MaGaTau", caption: "Mã ga tàu", width: 200 },
+                        { dataField: "TenGa", caption: "Tên ga", width: 200 },
+
+
+                    ],
+                    filterRow: { visible: true },
+
+
+                    paging: { pageSize: 10 },
+
+                });
+            },
+            error: function () {
+                alert("Lỗi server")
+            },
+
+        });
+
+
+
+    });
+
+</script>

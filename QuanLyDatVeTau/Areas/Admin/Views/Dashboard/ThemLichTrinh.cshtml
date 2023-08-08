@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "ThemLichTrinh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="p-0">THÊM LỊCH TRÌNH</h2>
+<div id="toast"></div>
+<div class="row">
+    <div class="col-5" id="tau"></div>
+    <div class="col-5"></div>
+    <div class="col-5 mt-3" id="gaDi"></div>
+    <div class="col-5 mt-3 mx-4" id="gaDen"></div>
+    <div class="col-5 mt-3" id="ngayDi"></div>
+    <div class="col-5 mt-3 mx-4" id="ngayDen"></div>
+    <div class="col-12 mt-5 p-0">
+    <div id="btn_themlichtrinh" class="btn btn-primary w-25">Thêm lịch trình</div>
+    </div>
+
+</div>
+
+
+
+
+<script>
+
+    $(async function () {
+        const toast = $('#toast').dxToast({ displayTime: 4000 }).dxToast('instance');
+
+        const showMess = (message, type) => {
+            toast.option({ message, type });
+            toast.show();
+        }
+
+
+        let gaTau = await getData('/Admin/Dashboard/LayGaTau')
+        let danhSachTau = await getData('/Admin/QuanLyTau/LayDanhSachTau')
+
+        $('#tau').dxSelectBox({
+            height: 50,
+            items: danhSachTau,
+            displayExpr: 'TenTau',
+            valueExpr: 'MaTau',
+            placeholder: 'Chọn tàu',
+            showClearButton: true,
+        });
+
+        $('#gaDi').dxSelectBox({
+            items: gaTau,
+            height: 50,
+            displayExpr: 'TenGa',
+            valueExpr: 'MaGaTau',
+            placeholder: 'Chọn ga đi',
+            showClearButton: true,
+        });
+
+        $('#gaDen').dxSelectBox({
+            items: gaTau,
+            height: 50,
+            displayExpr: 'TenGa',
+            valueExpr: 'MaGaTau',
+            placeholder: 'Chọn ga đến',
+            showClearButton: true,
+        });
+
+        $('#ngayDi').dxDateBox({
+            type: 'datetime',
+            height: 50,
+            placeholder: 'Chọn ngày đi',
+            showClearButton: true,
+            displayFormat: 'dd/MM/yyyy hh:mm:sss',
+        });
+
+        $('#ngayDen').dxDateBox({
+            type: 'datetime',
+            height: 50,
+            showClearButton: true,
+            placeholder: 'Chọn ngày đến',
+            displayFormat: 'dd/MM/yyyy hh:mm:sss',
+        });
+
+    
+
+
+        $('#btn_themlichtrinh').click(async (e) => {
+
+            let maTau = $('#tau').dxSelectBox("instance").option("value");
+            let maGaDi = $('#gaDi').dxSelectBox("instance").option("value");
+            let maGaDen = $('#gaDen').dxSelectBox("instance").option("value");
+            let ngayDi = $('#ngayDi').dxDateBox("instance").option("value");
+            let ngayDen = $('#ngayDen').dxDateBox("instance").option("value");
+          
+
+            if (maTau == null || maGaDi == null || maGaDen == null || ngayDi == null || ngayDen == null) {
+
+              return  showMess("Vui lòng nhập đủ thông tin",'error') 
+              
+            }
+
+
+       
+
+
+            var data = {
+                maTau, maGaDi, maGaDen, ngayDi, ngayDen
+            }
+            var res = await postData('/Admin/QuanLyTau/XuLyThemLichTrinh',data)
+    
+            if (res.STATUS == 0) {
+                return showMess(res.MESSAGE, 'error') 
+            }
+            else return showMess(res.MESSAGE, 'success') 
+
+            console.log(data)
+
+        })
+
+    })
+
+
+</script>
+
+

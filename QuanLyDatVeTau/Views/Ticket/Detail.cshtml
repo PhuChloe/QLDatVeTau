@@ -1,0 +1,434 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using QuanLyDatVeTau.Models.DTOs;
+
+<script>
+    $('#my-pics').hide();
+</script>
+<style>
+    .seat-map {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-gap: 10px;
+        margin: 20px;
+    }
+
+    .h-50 {
+        height: 50px;
+        width: 100%;
+        background: red;
+    }
+
+    .seat {
+        line-height: 50px;
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        border: 1px solid #666;
+        cursor: pointer;
+        position: relative;
+    }
+    .seat_hover {
+        position: absolute;
+        background: #f18686;
+        top: -60px;
+        left: 40px;
+        line-height: 25px;
+        border-radius: 7px;
+        z-index: 2;
+        font-weight:bolder;
+        display: none;
+        width: 170px;
+        padding: 10px;
+        height: 70px;
+    }
+    .seat:hover .seat_hover{
+        display:block;
+    }
+    .seat_select{
+        background-color:blue;
+        color:white;
+    }
+</style>
+
+@if (ViewBag.Error != null)
+{
+    <div style="height:500px; padding:10px 10px;">
+        <h3 class="text-danger">@ViewBag.Error</h3>
+    </div>
+}
+else
+{
+    ChiTietLichTrinh chiTiet = ViewBag.Data;
+    var gheCung = chiTiet.ThongTinGhe.Where(item => item.MaLoaiGhe == 4).ToList();
+    var gheMem = chiTiet.ThongTinGhe.Where(item => item.MaLoaiGhe == 5).ToList();
+    var g2 = chiTiet.ThongTinGhe.Where(item => item.MaLoaiGhe == 8).ToList();
+    var g4 = chiTiet.ThongTinGhe.Where(item => item.MaLoaiGhe == 6).ToList();
+    var g6 = chiTiet.ThongTinGhe.Where(item => item.MaLoaiGhe == 7).ToList();
+
+    <div style="min-height :500px; padding:10px 10px;">
+        <section class="flight-destinations">
+
+            <div style="padding:10px 10px;" class="container bg-white">
+                <div class="col-md-12">
+                    <div style="font-weight:bold; font-size:22px;color:#ff6a00;">
+                        <i class="fa-solid fa-train-subway"></i>
+                        Lịch trình từ @chiTiet.LichTrinh.TenGaDi đến @chiTiet.LichTrinh.TenGaDen
+                    </div>
+                    <i>@chiTiet.LichTrinh.NgayDi - @chiTiet.LichTrinh.NgayDen</i>
+                </div>
+
+                <div class="row">
+                    <input type="hidden" id="malichTrinh" value="@chiTiet.LichTrinh.MaLichTrinh" />
+                    <div class="col-md-8">
+                        <!--So do ghe cung start-->
+                        <div class="">
+                            <h3>@gheCung[0].TenLoaiGhe</h3>
+
+                            <div class="seat-map">
+
+                                @foreach (var item in gheCung)
+                                {
+                                    if (item.MaTrangThaiGhe == 1)
+                                    {
+                                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                                        <div data-seat="@json" class="seat seat-active text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>  Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="background:red;" class="seat disable text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+
+                        </div>
+                        <!--So do ghe cung end-->
+                        <div style="height:10px; background:#f18686" class="w-100"></div>
+
+
+                        <!--So do ghe mem start-->
+                        <div class="">
+                            <h3>@gheMem[0].TenLoaiGhe</h3>
+
+                            <div class="seat-map">
+                                @foreach (var item in gheMem)
+                                {
+                                    if (item.MaTrangThaiGhe == 1)
+                                    {
+                                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                                        <div data-seat="@json" class="seat seat-active text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>  Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="background:red;" class="seat disable text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+
+                        </div>
+                        <!--So do ghe mem end-->
+                        <div style="height:10px; background:#f18686" class="w-100"></div>
+
+
+                        <!--So do g2start-->
+                        <div class="">
+                            <h3>@g2[0].TenLoaiGhe</h3>
+
+                            <div class="seat-map">
+                                @foreach (var item in g2)
+                                {
+                                    if (item.MaTrangThaiGhe == 1)
+                                    {
+                                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                                        <div data-seat="@json" class="seat seat-active text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>  Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="background:red;" class="seat disable text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+
+                        </div>
+                        <!--So do g2 end-->
+                        <div style="height:10px; background:#f18686" class="w-100"></div>
+
+
+                        <!--So do g4 start-->
+                        <div class="">
+                            <h3>@g4[0].TenLoaiGhe</h3>
+
+                            <div class="seat-map">
+                                @foreach (var item in g4)
+                                {
+                                    if (item.MaTrangThaiGhe == 1)
+                                    {
+                                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                                        <div data-seat="@json" class="seat seat-active text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>  Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="background:red;" class="seat disable text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+
+                        </div>
+                        <!--So do g4 end-->
+                        <div style="height:10px; background:#f18686" class="w-100"></div>
+
+
+                        <!--So do g6 start-->
+                        <div class="">
+                            <h3>@g6[0].TenLoaiGhe</h3>
+
+                            <div class="seat-map">
+                                @foreach (var item in g2)
+                                {
+                                    if (item.MaTrangThaiGhe == 1)
+                                    {
+                                        var json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                                        <div data-seat="@json" class="seat seat-active text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>  Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div style="background:red;" class="seat disable text-center">
+                                            @item.SoGhe
+
+                                            <div class="text-left seat_hover">
+                                                <div>  Giá ghế: @item.GiaGhe</div>
+                                                <div>Trạng thái: @item.TrangThai</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+
+
+                        </div>
+                        <!--So do g6 end-->
+                        <div style="height:10px; background:#f18686" class="w-100"></div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <div style="min-height:300px;padding:0 10px 10px; border-radius:5px; border:1px solid #666" class="cart_container">
+                            <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight:bold" class="text-primary text-center">
+                                GIỎ VÉ
+                            </h3>
+                            <div class="list_ticket">
+                              
+
+                            </div>
+                            <div class="total_price">
+                                Tổng tiền: 0 VND
+                            </div>
+                            <div style="display:flex;align-items:center;justify-content:center" class="w-100">
+                                <a id="btn-checkout" href="/Ticket/Checkout/@chiTiet.LichTrinh.MaLichTrinh" class="btn-blue btn-red">Đặt vé</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+
+        </section>
+    </div>
+
+
+
+}
+
+<script>
+
+    var seat = document.querySelectorAll('.seat-active');
+
+    var malichTrinh = document.querySelector('#malichTrinh').value;
+
+    console.log("Mã lịch trình: " + malichTrinh)
+    removeLocalStorageItem('cart')
+    var total = 0;
+    seat.forEach(item => {
+        item.addEventListener('click', (e) => {
+
+            var checkSelect = item.classList.contains('seat_select')
+            var data = item.getAttribute('data-seat')
+            data = JSON.parse(data)
+            console.log(data)
+            item.classList.add('seat_select')
+            var giaGhe = Number(data.GiaGhe) * 1000
+            if (checkSelect) {
+                item.classList.remove('seat_select')
+                var ghe = document.getElementById(`${data.MaGhe}`)
+                ghe.remove();
+
+                let store = getLocalStorage('cart');
+                total -= giaGhe;
+               
+                store.listTicket = store.listTicket.filter(item => item.MaGhe != data.MaGhe)
+
+                let calu =0
+                store.listTicket.forEach(i => {
+                    calu += Number(i.GiaGhe);
+                })
+                store.total = calu;
+
+                setLocalStorage('cart', store)
+
+             
+
+                document.querySelector('.total_price').innerHTML = `Tổng tiền: ${total.toLocaleString('vi', { style: 'currency', currency: 'VND' })}`
+            }
+            else {
+
+                let store = getLocalStorage('cart');
+                total+=giaGhe;
+                
+                if (!store) {
+                    var dataStore = {
+                        total: data.GiaGhe,
+                        listTicket: [
+                            {
+                                TenLoaiGhe: data.TenLoaiGhe,
+                                SoGhe: data.SoGhe,
+                                MaGhe: data.MaGhe,
+                                GiaGhe: data.GiaGhe
+                            }
+                        ]
+
+                    }
+                    setLocalStorage('cart', dataStore)
+                }
+                else {
+                    store.total += data.GiaGhe;
+                    store.listTicket.push({                    
+                            TenLoaiGhe: data.TenLoaiGhe,
+                             SoGhe: data.SoGhe,
+                            MaGhe: data.MaGhe,
+                            GiaGhe: data.GiaGhe
+                        }
+                        )
+               
+                    setLocalStorage('cart', store)
+
+                }
+
+
+ 
+                var html =`  <div id="${data.MaGhe}"" style="border-bottom:1px dashed #333; padding:5px 5px" class="ticket_item">
+                                    <div>${data.TenLoaiGhe}</div>
+                                    <div>Chỗ ngồi: ${data.SoGhe}</div>
+                                    <div>Giá: ${giaGhe.toLocaleString('vi', { style: 'currency', currency: 'VND' }) }</div>
+                                </div>`
+
+                var list_ticket = document.querySelector('.list_ticket');
+
+                var div = document.createElement("div");
+                div.innerHTML = html;
+                list_ticket.append(div)
+
+              
+                document.querySelector('.total_price').innerHTML = `Tổng tiền: ${total.toLocaleString('vi', { style: 'currency', currency: 'VND' }) }`
+
+            }
+
+            console.log(getLocalStorage('cart'))
+        })
+    })
+
+
+
+    function setLocalStorage(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+    function getLocalStorage(key) {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : null;
+    }
+    function removeLocalStorageItem(key) {
+        localStorage.removeItem(key);
+    }
+
+</script>
